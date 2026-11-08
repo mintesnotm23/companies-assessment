@@ -1,0 +1,79 @@
+{
+  "Common": {
+    "retry": "Try again",
+    "close": "Close"
+  },
+  "App": {
+    "name": "Pipeline",
+    "language": "Language",
+    "signOut": "Sign out"
+  },
+  "SignIn": {
+    "title": "Sign in",
+    "description": "Demo sign-in: no credentials needed.",
+    "submit": "Sign in"
+  },
+  "Status": {
+    "new": "New",
+    "researching": "Researching",
+    "contacted": "Contacted",
+    "qualified": "Qualified",
+    "rejected": "Rejected"
+  },
+  "Companies": {
+    "title": "Companies",
+    "create": "New company",
+    "search": "Search name or domain",
+    "status": "Status",
+    "allStatuses": "All statuses",
+    "columns": {
+      "name": "Name",
+      "domain": "Domain",
+      "status": "Status",
+      "createdAt": "Created"
+    },
+    "resultCount": "{total, plural, =0 {No companies} one {# company} other {# companies}}",
+    "loading": "Loading companies…",
+    "updating": "Updating…",
+    "loadError": "Could not load companies.",
+    "empty": "No companies match these filters.",
+    "clearFilters": "Clear filters",
+    "pageOutOfRange": "This page has no results.",
+    "firstPage": "Go to first page",
+    "pagination": "Pagination",
+    "previous": "Previous",
+    "next": "Next",
+    "pageOf": "Page {page} of {pages}"
+  },
+  "Drawer": {
+    "createTitle": "New company",
+    "editTitle": "Edit company",
+    "loading": "Loading company…",
+    "notFound": "This company does not exist or you no longer have access to it.",
+    "loadError": "Could not load this company.",
+    "meta": "Version {version} · last updated {updatedAt}"
+  },
+  "Form": {
+    "name": "Name",
+    "domain": "Domain",
+    "domainHint": "Optional, for example acme.com",
+    "status": "Status",
+    "save": "Save changes",
+    "create": "Create company",
+    "saving": "Saving…",
+    "saved": "Changes saved.",
+    "nameRequired": "Name is required.",
+    "rejected": "The server rejected this change.",
+    "failed": "Something went wrong while saving. Please try again."
+  },
+  "Conflict": {
+    "title": "Someone else changed this company",
+    "description": "Your changes were not saved. Load the latest version to continue: what you typed will be kept.",
+    "reload": "Load latest version",
+    "reloading": "Loading latest version…",
+    "reloadFailed": "Could not load the latest version.",
+    "rebased": "Loaded version {version}. Your edits were kept; review them and save again.",
+    "theirValue": "Saved by someone else: {value}",
+    "empty": "(empty)"
+  }
+}

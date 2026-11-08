@@ -1,0 +1,79 @@
+{
+  "Common": {
+    "retry": "Opnieuw proberen",
+    "close": "Sluiten"
+  },
+  "App": {
+    "name": "Pipeline",
+    "language": "Taal",
+    "signOut": "Uitloggen"
+  },
+  "SignIn": {
+    "title": "Inloggen",
+    "description": "Demo-login: geen inloggegevens nodig.",
+    "submit": "Inloggen"
+  },
+  "Status": {
+    "new": "Nieuw",
+    "researching": "In onderzoek",
+    "contacted": "Benaderd",
+    "qualified": "Gekwalificeerd",
+    "rejected": "Afgewezen"
+  },
+  "Companies": {
+    "title": "Bedrijven",
+    "create": "Nieuw bedrijf",
+    "search": "Zoek op naam of domein",
+    "status": "Status",
+    "allStatuses": "Alle statussen",
+    "columns": {
+      "name": "Naam",
+      "domain": "Domein",
+      "status": "Status",
+      "createdAt": "Aangemaakt"
+    },
+    "resultCount": "{total, plural, =0 {Geen bedrijven} one {# bedrijf} other {# bedrijven}}",
+    "loading": "Bedrijven laden…",
+    "updating": "Bijwerken…",
+    "loadError": "Bedrijven konden niet worden geladen.",
+    "empty": "Geen bedrijven gevonden met deze filters.",
+    "clearFilters": "Filters wissen",
+    "pageOutOfRange": "Deze pagina heeft geen resultaten.",
+    "firstPage": "Naar eerste pagina",
+    "pagination": "Paginering",
+    "previous": "Vorige",
+    "next": "Volgende",
+    "pageOf": "Pagina {page} van {pages}"
+  },
+  "Drawer": {
+    "createTitle": "Nieuw bedrijf",
+    "editTitle": "Bedrijf bewerken",
+    "loading": "Bedrijf laden…",
+    "notFound": "Dit bedrijf bestaat niet of je hebt er geen toegang meer toe.",
+    "loadError": "Dit bedrijf kon niet worden geladen.",
+    "meta": "Versie {version} · laatst bijgewerkt {updatedAt}"
+  },
+  "Form": {
+    "name": "Naam",
+    "domain": "Domein",
+    "domainHint": "Optioneel, bijvoorbeeld acme.nl",
+    "status": "Status",
+    "save": "Wijzigingen opslaan",
+    "create": "Bedrijf aanmaken",
+    "saving": "Opslaan…",
+    "saved": "Wijzigingen opgeslagen.",
+    "nameRequired": "Naam is verplicht.",
+    "rejected": "De server heeft deze wijziging geweigerd.",
+    "failed": "Er ging iets mis bij het opslaan. Probeer het opnieuw."
+  },
+  "Conflict": {
+    "title": "Iemand anders heeft dit bedrijf gewijzigd",
+    "description": "Je wijzigingen zijn niet opgeslagen. Laad de nieuwste versie om verder te gaan: wat je hebt getypt blijft behouden.",
+    "reload": "Nieuwste versie laden",
+    "reloading": "Nieuwste versie laden…",
+    "reloadFailed": "De nieuwste versie kon niet worden geladen.",
+    "rebased": "Versie {version} geladen. Je wijzigingen zijn behouden; controleer ze en sla opnieuw op.",
+    "theirValue": "Opgeslagen door iemand anders: {value}",
+    "empty": "(leeg)"
+  }
+}
