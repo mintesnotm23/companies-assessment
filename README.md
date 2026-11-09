@@ -2,6 +2,8 @@
 
 A "Companies" feature for a B2B CRM: a filterable, sortable, paginated list with a URL-addressable drawer for viewing, creating and editing companies. Edits use optimistic concurrency, and a `409 Conflict` never throws away what the user typed.
 
+**Video walkthrough:** [Loom: Part 1 answers explained](https://www.loom.com/share/1293aa95daaa4f379bb62744d7f0d934)
+
 ## Running it
 
 Requires Node 24 (`.nvmrc`) and pnpm 10.
