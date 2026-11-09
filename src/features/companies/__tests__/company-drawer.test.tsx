@@ -32,7 +32,7 @@ describe("company drawer", () => {
 
       expect(await within(dialog).findByText(/Loaded version 2/)).toBeInTheDocument();
       expect(within(dialog).getByLabelText("Name")).toHaveValue("Acme Logistics BV");
-      expect(within(dialog).getByLabelText("Status")).toHaveValue("qualified");
+      expect(within(dialog).getByLabelText("Status")).toHaveTextContent("Qualified");
 
       await user.click(within(dialog).getByRole("button", { name: "Save changes" }));
 

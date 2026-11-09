@@ -1,8 +1,10 @@
 import { useTranslations } from "next-intl";
 import { useId, type ReactNode } from "react";
-import type { UseFormReturn } from "react-hook-form";
+import { Controller, type UseFormReturn } from "react-hook-form";
+import { Select } from "@/components/select";
 import { COMPANY_STATUSES } from "@/lib/api/schema";
 import type { CompanyFormValues } from "../company-form";
+import { StatusDot } from "./status-dot";
 
 type Props = {
   form: UseFormReturn<CompanyFormValues>;
@@ -15,6 +17,11 @@ export function CompanyFormFields({ form, overlaps = {} }: Props) {
   const t = useTranslations();
   const id = useId();
   const { errors } = form.formState;
+  const statusOptions = COMPANY_STATUSES.map((status) => ({
+    value: status,
+    label: t(`Status.${status}`),
+    icon: <StatusDot status={status} />,
+  }));
 
   // Client schema can only fail on name; server messages pass through as-is
   const nameError =
@@ -59,19 +66,23 @@ export function CompanyFormFields({ form, overlaps = {} }: Props) {
         overlap={overlaps.status && theirs(t(`Status.${overlaps.status}`))}
       >
         {(describedBy) => (
-          <select
-            id={`${id}-status`}
-            {...form.register("status")}
-            aria-invalid={errors.status ? true : undefined}
-            aria-describedby={describedBy}
-            className={inputClass}
-          >
-            {COMPANY_STATUSES.map((status) => (
-              <option key={status} value={status}>
-                {t(`Status.${status}`)}
-              </option>
-            ))}
-          </select>
+          <Controller
+            control={form.control}
+            name="status"
+            render={({ field }) => (
+              <Select
+                id={`${id}-status`}
+                ref={field.ref}
+                value={field.value}
+                options={statusOptions}
+                onValueChange={field.onChange}
+                onBlur={field.onBlur}
+                aria-invalid={errors.status ? true : undefined}
+                aria-describedby={describedBy}
+                className="w-full"
+              />
+            )}
+          />
         )}
       </Field>
     </div>

@@ -3,6 +3,7 @@ import { useFormatter, useTranslations } from "next-intl";
 import type { MouseEvent, ReactNode } from "react";
 import type { Company, CompanyPage, CompanySort } from "@/lib/api/schema";
 import { nextSort, sortDirection, type SortableColumn } from "../list-params";
+import { StatusDot } from "./status-dot";
 
 const COLUMN_COUNT = 4;
 
@@ -155,7 +156,10 @@ function CompanyRow({
       </td>
       <td className="px-4 py-2 text-gray-600">{company.domain ?? "—"}</td>
       <td className="px-4 py-2">
-        <span className="rounded-full bg-gray-100 px-2 py-0.5 text-xs">{t(company.status)}</span>
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-gray-100 px-2 py-0.5 text-xs">
+          <StatusDot status={company.status} />
+          {t(company.status)}
+        </span>
       </td>
       <td className="px-4 py-2 text-gray-600">
         <time dateTime={company.created_at}>

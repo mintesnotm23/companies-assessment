@@ -24,7 +24,8 @@ describe("companies list", () => {
     await screen.findByText("40 companies");
     const table = screen.getByRole("table");
 
-    await user.selectOptions(screen.getByLabelText("Status"), "qualified");
+    await user.click(screen.getByLabelText("Status"));
+    await user.click(screen.getByRole("option", { name: "Qualified" }));
 
     expect(await screen.findByText("8 companies")).toBeInTheDocument();
     for (const row of bodyRows()) expect(row).toHaveTextContent("Qualified");
@@ -60,7 +61,7 @@ describe("companies list", () => {
     expect(await screen.findByText("8 companies")).toBeInTheDocument();
     expect(bodyRows()[0]).toHaveTextContent("Dune Apparel");
     expect(screen.getByRole("columnheader", { name: /Name/ })).toHaveAttribute("aria-sort", "ascending");
-    expect(screen.getByLabelText("Status")).toHaveValue("rejected");
+    expect(screen.getByLabelText("Status")).toHaveTextContent("Rejected");
   });
 
   it("toggles sort direction from the column header", async () => {

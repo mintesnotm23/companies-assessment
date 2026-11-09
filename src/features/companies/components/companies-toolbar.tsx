@@ -1,6 +1,8 @@
 import { useTranslations } from "next-intl";
 import { useId } from "react";
+import { Select, type SelectOption } from "@/components/select";
 import { COMPANY_STATUSES, type CompanyStatus } from "@/lib/api/schema";
+import { StatusDot } from "./status-dot";
 
 type Props = {
   q: string;
@@ -12,9 +14,8 @@ type Props = {
   onCreate: () => void;
 };
 
-function parseStatus(value: string): CompanyStatus | null {
-  return COMPANY_STATUSES.find((status) => status === value) ?? null;
-}
+// Radix Select disallows "" as an item value
+const ALL = "all";
 
 export function CompaniesToolbar({
   q,
@@ -27,6 +28,14 @@ export function CompaniesToolbar({
 }: Props) {
   const t = useTranslations();
   const id = useId();
+  const statusOptions: SelectOption<CompanyStatus | typeof ALL>[] = [
+    { value: ALL, label: t("Companies.allStatuses"), icon: <StatusDot status={null} /> },
+    ...COMPANY_STATUSES.map((value) => ({
+      value,
+      label: t(`Status.${value}`),
+      icon: <StatusDot status={value} />,
+    })),
+  ];
 
   return (
     <div className="flex flex-wrap items-end gap-3">
@@ -46,19 +55,13 @@ export function CompaniesToolbar({
         <label htmlFor={`${id}-status`} className="text-sm font-medium">
           {t("Companies.status")}
         </label>
-        <select
+        <Select
           id={`${id}-status`}
-          value={status ?? ""}
-          onChange={(event) => onStatusChange(parseStatus(event.target.value))}
-          className="rounded-md border border-gray-300 px-3 py-2 text-sm"
-        >
-          <option value="">{t("Companies.allStatuses")}</option>
-          {COMPANY_STATUSES.map((value) => (
-            <option key={value} value={value}>
-              {t(`Status.${value}`)}
-            </option>
-          ))}
-        </select>
+          value={status ?? ALL}
+          options={statusOptions}
+          onValueChange={(value) => onStatusChange(value === ALL ? null : value)}
+          className="min-w-44"
+        />
       </div>
       <button
         type="button"
