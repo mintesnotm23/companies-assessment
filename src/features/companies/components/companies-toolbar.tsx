@@ -9,8 +9,10 @@ type Props = {
   status: CompanyStatus | null;
   total: number | undefined;
   isUpdating: boolean;
+  hasFilters: boolean;
   onSearch: (q: string) => void;
   onStatusChange: (status: CompanyStatus | null) => void;
+  onClearFilters: () => void;
   onCreate: () => void;
 };
 
@@ -22,8 +24,10 @@ export function CompaniesToolbar({
   status,
   total,
   isUpdating,
+  hasFilters,
   onSearch,
   onStatusChange,
+  onClearFilters,
   onCreate,
 }: Props) {
   const t = useTranslations();
@@ -63,6 +67,16 @@ export function CompaniesToolbar({
           className="min-w-44"
         />
       </div>
+      {hasFilters && (
+        <button
+          type="button"
+          onClick={onClearFilters}
+          className="inline-flex items-center gap-1.5 rounded-md px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+        >
+          <ResetIcon />
+          {t("Companies.resetFilters")}
+        </button>
+      )}
       <button
         type="button"
         onClick={onCreate}
@@ -74,5 +88,19 @@ export function CompaniesToolbar({
         {isUpdating ? t("Companies.updating") : total !== undefined && t("Companies.resultCount", { total })}
       </p>
     </div>
+  );
+}
+
+function ResetIcon() {
+  return (
+    <svg aria-hidden width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path
+        d="M2.5 8a5.5 5.5 0 1 0 1.6-3.9M2.5 2.5v3h3"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }

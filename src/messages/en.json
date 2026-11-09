@@ -38,6 +38,7 @@
     "loadError": "Could not load companies.",
     "empty": "No companies match these filters.",
     "clearFilters": "Clear filters",
+    "resetFilters": "Reset filters",
     "pageOutOfRange": "This page has no results.",
     "firstPage": "Go to first page",
     "pagination": "Pagination",

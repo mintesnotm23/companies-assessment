@@ -81,9 +81,27 @@ describe("companies list", () => {
     const { user } = renderWithProviders(<CompaniesScreen />, { searchParams: "?q=zzz" });
 
     expect(await screen.findByText("No companies match these filters.")).toBeInTheDocument();
-    await user.click(screen.getByRole("button", { name: "Clear filters" }));
+    await user.click(within(screen.getByRole("table")).getByRole("button", { name: "Clear filters" }));
 
     expect(await screen.findByText("40 companies")).toBeInTheDocument();
+  });
+
+  it("resets search and status from the toolbar", async () => {
+    const onUrlUpdate = vi.fn();
+    const { user } = renderWithProviders(<CompaniesScreen />, {
+      searchParams: "?q=a&status=qualified",
+      onUrlUpdate,
+    });
+    await screen.findByRole("table");
+    expect(screen.queryByText("40 companies")).not.toBeInTheDocument();
+
+    await user.click(screen.getByRole("button", { name: "Reset filters" }));
+
+    expect(await screen.findByText("40 companies")).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Reset filters" })).not.toBeInTheDocument();
+    expect(screen.getByLabelText("Search name or domain")).toHaveValue("");
+    expect(screen.getByLabelText("Status")).toHaveTextContent("All statuses");
+    expect(onUrlUpdate).toHaveBeenLastCalledWith(expect.objectContaining({ queryString: "" }));
   });
 
   it("shows an error with a working retry", async () => {

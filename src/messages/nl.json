@@ -38,6 +38,7 @@
     "loadError": "Bedrijven konden niet worden geladen.",
     "empty": "Geen bedrijven gevonden met deze filters.",
     "clearFilters": "Filters wissen",
+    "resetFilters": "Filters resetten",
     "pageOutOfRange": "Deze pagina heeft geen resultaten.",
     "firstPage": "Naar eerste pagina",
     "pagination": "Paginering",

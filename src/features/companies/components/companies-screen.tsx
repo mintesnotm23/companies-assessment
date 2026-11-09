@@ -23,8 +23,10 @@ export function CompaniesScreen() {
         status={params.status}
         total={listQuery.data?.total}
         isUpdating={listQuery.isFetching && listQuery.isPlaceholderData}
+        hasFilters={hasFilters}
         onSearch={actions.search}
         onStatusChange={actions.filterStatus}
+        onClearFilters={actions.clearFilters}
         onCreate={actions.openCreate}
       />
       <CompaniesTable
